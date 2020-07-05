@@ -1,0 +1,10 @@
+query TestUnionNestedNonNull($oneName: String, $twoName: String) {
+  testUnionNestedNonNull(oneName: $oneName, twoName: $twoName) {
+    ... on TestUnionOne {
+      oneName
+    }
+    ... on TestUnionTwo {
+      twoName
+    }
+  }
+}

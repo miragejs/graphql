@@ -1,0 +1,5 @@
+query TestObjectsNonNull($size: String) {
+  testObjectsNonNull(size: $size) {
+    id
+  }
+}

@@ -1,0 +1,6 @@
+mutation OptionallyMutateTestObject($id: ID!, $input: TestObjectInput!) {
+  optionallyMutateTestObject(id: $id, input: $input) {
+    id
+    size
+  }
+}

@@ -1,0 +1,9 @@
+query TestInterfaceInlineFragment($id: ID, $label: String) {
+  testInterface(id: $id, label: $label) {
+    ... on TestImplOne {
+      id
+      description
+      label
+    }
+  }
+}

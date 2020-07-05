@@ -1,0 +1,6 @@
+/**/*__mocks__/
+/__tests__/
+/coverage/
+/.eslintrc.js
+/babel.config.js
+/jest.config.js

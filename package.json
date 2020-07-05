@@ -1,0 +1,58 @@
+{
+  "name": "miragejs-graphql",
+  "version": "0.1.0",
+  "description": "A library for handling GraphQL requests with Mirage JS",
+  "main": "index.js",
+  "keywords": [
+    "pretender",
+    "prototype",
+    "server",
+    "testing",
+    "mirage",
+    "graphql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miragejs/graphql.git"
+  },
+  "license": "MIT",
+  "author": "Rocky Neurock",
+  "bugs": {
+    "url": "https://github.com/miragejs/graphql/issues"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prettier:check": "prettier --list-different '**/*.js'",
+    "prettier:update": "prettier --write .",
+    "test:run": "jest"
+  },
+  "dependencies": {
+    "b2a": "^1.1.2",
+    "graphql": "^15.0.0",
+    "miragejs": "^0.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.9.0",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^26.0.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "graphql-request": "^2.0.0",
+    "graphql-tag": "^2.10.3",
+    "jest": "^26.0.1",
+    "jest-transform-graphql": "^2.1.0",
+    "jest-watch-typeahead": "^0.6.0",
+    "prettier": "^2.0.2",
+    "typescript": "^2.8.0"
+  },
+  "engines": {
+    "node": "6.* || 8.* || >= 10.*"
+  }
+}

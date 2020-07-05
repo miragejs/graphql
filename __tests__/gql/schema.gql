@@ -1,0 +1,150 @@
+input TestObjectInput {
+  size: String
+}
+
+interface TestInterface {
+  id: ID!
+  label: String!
+}
+
+type Mutation {
+  createTestObject(input: TestObjectInput!): TestObject
+  deleteTestObject(id: ID!): TestObject
+  optionallyMutateTestObject(id: ID!, input: TestObjectInput!): TestObject
+  unimplemented: TestObject
+  updateTestObject(id: ID!, input: TestObjectInput!): TestObject
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+}
+
+type Query {
+  testContext: String
+  testInterface(id: ID, label: String): TestInterface
+  testInterfaceNonNull(id: ID, label: String): TestInterface!
+  testInterfaceOptional(id: ID!): TestInterface
+  testObject(id: ID!): TestObject
+  testObjectNonNull(id: ID!): TestObject!
+  testObjects(size: String): [TestObject]
+  testObjectsNonNull(size: String): [TestObject]!
+  testObjectsNestedNonNull(size: String): [TestObject!]!
+  testRelayConnection(
+    color: String
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): TestRelayConnection
+  testNonNullEdgesRelayConnection(
+    color: String
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): TestNonNullEdgesRelayConnection
+  testNonNullNodesRelayConnection(
+    color: String
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): TestNonNullNodesRelayConnection
+  testScalar: String
+  testScalarNonNull: String!
+  testScalarOptionalResolve: String
+  testSortedObjects: [TestObject]
+  testUnion(oneName: String, twoName: String): [TestUnion]
+  testUnionNonNull(oneName: String, twoName: String): [TestUnion]!
+  testUnionNestedNonNull(oneName: String, twoName: String): [TestUnion!]!
+}
+
+type TestCategory {
+  id: ID!
+  name: String!
+}
+
+type TestImplOne implements TestInterface {
+  id: ID!
+  description: String
+  label: String!
+}
+
+type TestImplTwo implements TestInterface {
+  id: ID!
+  label: String!
+}
+
+type TestObject {
+  id: ID!
+  belongsToField: TestCategory
+  belongsToNonNullField: TestCategory!
+  hasManyField: [TestOption]
+  hasManyNonNullField: [TestOption]!
+  hasManyNestedNonNullField: [TestOption!]!
+  interfaceField: TestInterface
+  interfaceNonNullField: TestInterface!
+  relayConnectionField(
+    first: Int
+    after: String
+  ): TestRelayConnection
+  relayConnectionNonNullField(
+    last: Int
+    before: String
+  ): TestRelayConnection!
+  size: String
+  sizeNonNull: String!
+  unionField: [TestUnion]
+  unionNonNullField(oneName: String): [TestUnion]!
+  unionNestedNonNullField(twoName: String): [TestUnion!]!
+}
+
+type TestOption {
+  id: ID!
+  name: String!
+}
+
+type TestRelayConnection {
+  edges: [TestRelayEdge]
+  pageInfo: PageInfo!
+}
+
+type TestNonNullEdgesRelayConnection {
+  edges: [TestRelayEdge!]!
+  pageInfo: PageInfo!
+}
+
+type TestNonNullNodesRelayConnection {
+  edges: [TestNonNullNodesRelayEdge]
+  pageInfo: PageInfo!
+}
+
+type TestRelayEdge {
+  cursor: String!
+  node: TestRelayNode
+}
+
+type TestNonNullNodesRelayEdge {
+  cursor: String!
+  node: TestRelayNode!
+}
+
+type TestRelayNode {
+  id: ID!
+  color: String
+}
+
+type TestUnionOne {
+  id: ID!
+  oneName: String
+}
+
+type TestUnionTwo {
+  id: ID!
+  twoName: String
+}
+
+union TestUnion = TestUnionOne | TestUnionTwo

@@ -1,0 +1,5 @@
+query TestObjects($size: String) {
+  testObjects(size: $size) {
+    id
+  }
+}
