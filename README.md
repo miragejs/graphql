@@ -1,5 +1,8 @@
 # Mirage JS GraphQL
 
+![npm package](https://img.shields.io/npm/v/@miragejs/graphql?color=success&label=npm%20package)
+![build](https://img.shields.io/github/workflow/status/miragejs/graphql/CI)
+
 Use [Mirage JS](https://miragejs.com) with [GraphQL](https://graphql.org).
 
 ## Overview
