@@ -1,9 +1,6 @@
-name: Main CI
+name: PR CI
 
-on:
-  push:
-    branches:
-      - main
+on: pull_request
 
 jobs:
   test:
