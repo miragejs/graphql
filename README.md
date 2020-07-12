@@ -31,14 +31,14 @@ Mirage GraphQL tries to do a lot for you. Here are the highlights:
 
 ## Installation
 
-You should install both `miragejs` and `miragejs-graphql`.
+You should install both `miragejs` and `@miragejs/graphql`.
 
 ```sh
 # Using npm
-npm install --save-dev miragejs miragejs-graphql
+npm install --save-dev miragejs @miragejs/graphql
 
 # Using Yarn
-yarn add --dev miragejs miragejs-graphql
+yarn add --dev miragejs @miragejs/graphql
 ```
 
 ## Guide
