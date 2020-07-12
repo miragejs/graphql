@@ -1,0 +1,6 @@
+mutation CreateTestObject($input: TestObjectInput!) {
+  createTestObject(input: $input) {
+    id
+    size
+  }
+}

@@ -1,0 +1,28 @@
+query TestRelayConnection(
+  $color: String
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+) {
+  testRelayConnection(
+    color: $color
+    first: $first
+    last: $last
+    after: $after
+    before: $before
+  ) {
+    edges {
+      cursor
+      node {
+        id
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

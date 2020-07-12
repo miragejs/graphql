@@ -1,0 +1,82 @@
+fragment testOption on TestOption {
+  id
+  name
+}
+
+fragment testRelayConnection on TestRelayConnection {
+  edges {
+    cursor
+    node {
+      id
+    }
+  }
+  pageInfo {
+    hasPreviousPage
+    hasNextPage
+    startCursor
+    endCursor
+  }
+}
+
+fragment testUnion on TestUnion {
+  ... on TestUnionOne {
+    id
+    oneName
+  }
+  ... on TestUnionTwo {
+    id
+    twoName
+  }
+}
+
+query TestObject($id: ID!) {
+  testObject(id: $id) {
+    id
+    size
+    sizeNonNull
+    belongsToField {
+      id
+      name
+    }
+    belongsToNonNullField {
+      id
+      name
+    }
+    hasManyField {
+      ...testOption
+    }
+    hasManyNonNullField {
+      ...testOption
+    }
+    hasManyNestedNonNullField {
+      ...testOption
+    }
+    interfaceField {
+      ... on TestImplOne {
+        id
+        label
+      }
+    }
+    interfaceNonNullField {
+      ... on TestImplOne {
+        id
+        label
+      }
+    }
+    relayConnectionField(first: 1, after: "VGVzdFJlbGF5Tm9kZTox") {
+      ...testRelayConnection
+    }
+    relayConnectionNonNullField(last: 1, before: "VGVzdFJlbGF5Tm9kZToz") {
+      ...testRelayConnection
+    }
+    unionField {
+      ...testUnion
+    }
+    unionNonNullField(oneName: "foo") {
+      ...testUnion
+    }
+    unionNestedNonNullField(twoName: "bar") {
+      ...testUnion
+    }
+  }
+}

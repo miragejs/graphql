@@ -1,0 +1,28 @@
+query TestNonNullEdgesRelayConnection(
+  $color: String
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+) {
+  testNonNullEdgesRelayConnection(
+    color: $color
+    first: $first
+    last: $last
+    after: $after
+    before: $before
+  ) {
+    edges {
+      cursor
+      node {
+        id
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

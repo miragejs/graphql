@@ -1,0 +1,5 @@
+query TestObject($id: ID!) {
+  testObject(id: $id) {
+    id
+  }
+}

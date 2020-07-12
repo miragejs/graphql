@@ -1,0 +1,6 @@
+query TestInterfaceNonNull($label: String) {
+  testInterfaceNonNull(label: $label) {
+    id
+    label
+  }
+}

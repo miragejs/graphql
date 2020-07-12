@@ -1,0 +1,6 @@
+mutation DeleteTestObject($id: ID!) {
+  deleteTestObject(id: $id) {
+    id
+    size
+  }
+}
