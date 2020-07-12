@@ -1,4 +1,5 @@
 /**/*__mocks__/
+/.github/
 /__tests__/
 /coverage/
 /.eslintrc.js
