@@ -24,19 +24,14 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        "jest.config.js",
-      ],
+      files: ["jest.config.js"],
       env: {
         browser: false,
         node: true,
       },
     },
     {
-      files: [
-        "**/__mocks__/**",
-        "__tests__/**"
-      ],
+      files: ["**/__mocks__/**", "__tests__/**"],
       plugins: ["jest"],
       env: {
         "jest/globals": true,
