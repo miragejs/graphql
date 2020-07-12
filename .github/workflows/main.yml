@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  - pull_request
+  - push:
+      branches:
+        - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn install
+
+      - name: Lint
+      - run: yarn prettier:check
+      - run: yarn lint
+
+      - name: Test
+      - run: yarn test
