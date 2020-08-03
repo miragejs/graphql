@@ -43,7 +43,7 @@ describe("Unit | handler", function () {
     expect(response.data.errors[0].message).toBe("foo");
   });
 
-  it('creates handler with no options provided', function () {
+  it('supports creating handler with no options provided', function () {
     expect(() => createGraphQLHandler(graphQLSchema, mirageSchema)).toThrow("Cannot destructure property `context` of 'undefined' or 'null'.")
   })
 });
