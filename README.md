@@ -158,7 +158,7 @@ export default {
   // ...other component stuff
 
   personQuery: `
-    query Person(id: $id) {
+    query Person($id: id) {
       person(id: $id) {
         id
         firstName
@@ -167,7 +167,7 @@ export default {
     }
   `,
   getPerson(id) {
-    return request("/graphql", this.personQuery, { variables: { id } })
+    return request("/graphql", this.personQuery, { id } )
   }
 }
 ```
@@ -262,7 +262,7 @@ export default {
   // ...other component stuff
 
   createPersonMutation: `
-    mutation CreatePerson(input: PersonInput!) {
+    mutation CreatePerson($input: PersonInput!) {
       createPerson(input: $input) {
         id
         firstName
@@ -271,7 +271,7 @@ export default {
     }
   `,
   updatePersonMutation: `
-    mutation UpdatePerson(id: ID!, input: PersonInput!) {
+    mutation UpdatePerson($id: ID!, $input: PersonInput!) {
       updatePerson(id: $id, input: $input) {
         id
         firstName
@@ -280,14 +280,10 @@ export default {
     }
   `,
   createPerson(input) {
-    return request("/graphql", this.createPersonMutation, {
-      variables: { input }
-    })
+    return request("/graphql", this.createPersonMutation, { input })
   },
   updatePerson(id, input) {
-    return request("/graphql", this.updatePersonMutation, {
-      variables: { id, input }
-    })
+    return request("/graphql", this.updatePersonMutation, { id, input })
   }
 }
 ```
@@ -306,7 +302,7 @@ A call to `createPerson({ firstName: "Ola", lastName: "Englund" })` will cause M
 }
 ```
 
-If you then wanted to update that person, you could call `updatePerson(id: "1", { lastName: "Strandberg" })` which would result in:
+If you then wanted to update that person, you could call `updatePerson("1", { lastName: "Strandberg" })` which would result in:
 
 ```json
 {
@@ -363,7 +359,7 @@ export default {
     }
   `,
   getPeopleByLastName(lastName) {
-    return request("/graphql", this.peopleQuery, { variables: { lastName } })
+    return request("/graphql", this.peopleQuery, { lastName })
   }
 }
 ```
@@ -455,7 +451,7 @@ export default {
     }
   `,
   getSortedPeopleBy(sortBy) {
-    return request("/graphql", this.peopleQuery, { variables: { sortBy } })
+    return request("/graphql", this.peopleQuery, { sortBy })
   }
 }
 ```
@@ -537,12 +533,12 @@ export default {
   // ...other component stuff
 
   deletePersonMutation: `
-    mutation DeletePerson(id: ID!) {
-      createPerson(id: $id)
+    mutation DeletePerson($id: ID!) {
+      deletePerson(id: $id)
     }
   `,
   deletePerson(id) {
-    return request("/graphql", this.deletePersonMutation, { variables: { id } })
+    return request("/graphql", this.deletePersonMutation, { id })
   }
 }
 ```
