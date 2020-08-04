@@ -167,7 +167,7 @@ export default {
     }
   `,
   getPerson(id) {
-    return request("/graphql", this.personQuery, { id } )
+    return request("/graphql", this.personQuery, { id })
   }
 }
 ```
