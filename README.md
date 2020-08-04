@@ -262,7 +262,7 @@ export default {
   // ...other component stuff
 
   createPersonMutation: `
-    mutation CreatePerson(input: PersonInput!) {
+    mutation CreatePerson($input: PersonInput!) {
       createPerson(input: $input) {
         id
         firstName
@@ -271,7 +271,7 @@ export default {
     }
   `,
   updatePersonMutation: `
-    mutation UpdatePerson(id: ID!, input: PersonInput!) {
+    mutation UpdatePerson($id: ID!, $input: PersonInput!) {
       updatePerson(id: $id, input: $input) {
         id
         firstName
@@ -280,14 +280,10 @@ export default {
     }
   `,
   createPerson(input) {
-    return request("/graphql", this.createPersonMutation, {
-      variables: { input }
-    })
+    return request("/graphql", this.createPersonMutation, { input })
   },
   updatePerson(id, input) {
-    return request("/graphql", this.updatePersonMutation, {
-      variables: { id, input }
-    })
+    return request("/graphql", this.updatePersonMutation, { id, input })
   }
 }
 ```
@@ -306,7 +302,7 @@ A call to `createPerson({ firstName: "Ola", lastName: "Englund" })` will cause M
 }
 ```
 
-If you then wanted to update that person, you could call `updatePerson(id: "1", { lastName: "Strandberg" })` which would result in:
+If you then wanted to update that person, you could call `updatePerson("1", { lastName: "Strandberg" })` which would result in:
 
 ```json
 {
