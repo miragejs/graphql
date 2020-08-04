@@ -158,7 +158,7 @@ export default {
   // ...other component stuff
 
   personQuery: `
-    query Person(id: $id) {
+    query Person($id: id) {
       person(id: $id) {
         id
         firstName
@@ -167,7 +167,7 @@ export default {
     }
   `,
   getPerson(id) {
-    return request("/graphql", this.personQuery, { variables: { id } })
+    return request("/graphql", this.personQuery, { id } )
   }
 }
 ```
