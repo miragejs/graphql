@@ -359,7 +359,7 @@ export default {
     }
   `,
   getPeopleByLastName(lastName) {
-    return request("/graphql", this.peopleQuery, { variables: { lastName } })
+    return request("/graphql", this.peopleQuery, { lastName })
   }
 }
 ```
@@ -451,7 +451,7 @@ export default {
     }
   `,
   getSortedPeopleBy(sortBy) {
-    return request("/graphql", this.peopleQuery, { variables: { sortBy } })
+    return request("/graphql", this.peopleQuery, { sortBy })
   }
 }
 ```
