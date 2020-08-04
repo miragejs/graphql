@@ -533,12 +533,12 @@ export default {
   // ...other component stuff
 
   deletePersonMutation: `
-    mutation DeletePerson(id: ID!) {
-      createPerson(id: $id)
+    mutation DeletePerson($id: ID!) {
+      deletePerson(id: $id)
     }
   `,
   deletePerson(id) {
-    return request("/graphql", this.deletePersonMutation, { variables: { id } })
+    return request("/graphql", this.deletePersonMutation, { id })
   }
 }
 ```
