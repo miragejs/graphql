@@ -1326,11 +1326,6 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
   integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
 
-b2a@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/b2a/-/b2a-1.1.2.tgz#3bb0a7dbc0931c84ac97722fa4f5f51ba0a7d831"
-  integrity sha512-Ee7SUAyWeIx4ICRygOi7dVlGpHRxynsaLIZwOtHtGKls3LhLchTRk5KrI0O8ioWqy94ikkE8Z2Li3LWNd027/A==
-
 babel-eslint@^10.0.2:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
