@@ -11,7 +11,7 @@ Mirage lets you simulate API responses by writing **route handlers**. A route ha
 
 ```javascript
 import { Server } from "miragejs"
-import { createGraphQLHandler } from "miragejs-graphql"
+import { createGraphQLHandler } from "@miragejs/graphql"
 import graphQLSchema from "app/gql/schema.gql"
 
 new Server({
@@ -126,7 +126,7 @@ and we create a Mirage server like this:
 // app/mirage/server.js
 
 import { Server } from "miragejs"
-import { createGraphQLHandler } from "miragejs-graphql"
+import { createGraphQLHandler } from "@miragejs/graphql"
 import graphQLSchema from "app/gql/schema.gql"
 
 export function createServer() {
@@ -394,7 +394,7 @@ import graphQLSchema from "app/gql/schema.gql"
 import {
   createGraphQLHandler,
   mirageGraphQLFieldResolver
-} from "miragejs-graphql"
+} from "@miragejs/graphql"
 
 export function createServer() {
   return new Server({
@@ -498,7 +498,7 @@ import graphQLSchema from "app/gql/schema.gql"
 import {
   createGraphQLHandler,
   mirageGraphQLFieldResolver
-} from "miragejs-graphql"
+} from "@miragejs/graphql"
 
 export function createServer() {
   return new Server({
