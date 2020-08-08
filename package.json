@@ -2,7 +2,8 @@
   "name": "@miragejs/graphql",
   "version": "0.1.1",
   "description": "A library for handling GraphQL requests with Mirage JS",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index-mjs.js",
   "keywords": [
     "pretender",
     "prototype",
@@ -22,6 +23,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "prepublishOnly": "node build",
     "prettier:check": "prettier --list-different '**/*.js'",
     "prettier:update": "prettier --write .",
     "test": "jest"
