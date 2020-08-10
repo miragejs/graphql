@@ -78,5 +78,8 @@ query TestObject($id: ID!) {
     unionNestedNonNullField(twoName: "bar") {
       ...testUnion
     }
+    unionSingularField {
+      ...testUnion
+    }
   }
 }
