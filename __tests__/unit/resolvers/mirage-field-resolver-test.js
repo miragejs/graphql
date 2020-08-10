@@ -62,7 +62,22 @@ describe("Unit | resolvers | mirage field resolver", function () {
   });
 
   describe("polymorphic types", function () {
-    it("can resolve union types", function () {
+    it("can resolve union object types", function () {
+      const info = { returnType: queryFields.testUnionSingular.type };
+
+      mirageGraphQLFieldResolver(obj, args, context, info);
+
+      expect(resolveUnion).toHaveBeenCalledWith(
+        obj,
+        args,
+        context,
+        info,
+        false,
+        info.returnType
+      );
+    });
+
+    it("can resolve union list types", function () {
       const {
         type: { ofType: unionType },
       } = queryFields.testUnion;
@@ -75,6 +90,7 @@ describe("Unit | resolvers | mirage field resolver", function () {
         args,
         context,
         info,
+        true,
         unionType
       );
     });

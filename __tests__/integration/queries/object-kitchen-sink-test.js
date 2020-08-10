@@ -4,7 +4,6 @@ import { query, startServer } from "@tests/integration/setup";
 describe("Integration | queries | object", function () {
   test("query for test object", async function () {
     const server = startServer();
-
     const testCategory = server.create("test-category", { name: "cat" });
     const testImpl = server.create("test-impl-one", { label: "impl" });
     const testOptions = server.createList("test-option", 1, { name: "opt" });
@@ -70,6 +69,7 @@ describe("Integration | queries | object", function () {
       ],
       unionNonNullField: [{ id: "1", oneName: "foo" }],
       unionNestedNonNullField: [{ id: "1", twoName: "bar" }],
+      unionSingularField: { id: "1", oneName: "foo" },
     });
   });
 });
