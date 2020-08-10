@@ -1,6 +1,7 @@
 /**/*__mocks__/
 /.github/
 /__tests__/
+/build/
 /coverage/
 /.eslintrc.js
 /babel.config.js
