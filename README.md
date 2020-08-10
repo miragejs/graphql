@@ -53,6 +53,7 @@ This guide assumes most of its readers are already using GraphQL in their apps a
 * [Mirage GraphQL Assumptions](#mirage-graphql-assumptions)
   * [You Don't Need Mirage Models](#you-dont-need-mirage-models)
   * [Arguments from GraphQL Queries Map to Field Names of the Return Type](#arguments-from-graphql-queries-map-to-field-names-of-the-return-type)
+  * [Miscellaneous Assumptions](#miscellaneous-assumptions)
 * [Example Use Cases](#example-use-cases)
   * [Example Schema](#example-schema)
   * [Example: Find Person by ID](#example-find-person-by-id)
@@ -75,6 +76,10 @@ In many cases, you need to [tell Mirage about the models](https://miragejs.com/d
 #### Arguments from GraphQL Queries Map to Field Names of the Return Type
 
 Mirage GraphQL uses arguments to filter records from Mirage's database. This isn't very useful for testing, as you only need to seed Mirage's database with the exact records you need for a given test. It's more useful when using Mirage for development where filtering and pagination may be desired for a more realistic user experience.
+
+#### Miscellaneous Assumptions
+
+* Fields that should resolve to a single object of a union type are resolved by taking the first appropriate record from Mirage's database. This is how Mirage GraphQL automatically resolves in this scenario. As with all automatic resolution, if you need to include some additional logic, you'll need to supply your own resolver.
 
 ### Example Use Cases
 
