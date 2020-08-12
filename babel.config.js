@@ -21,7 +21,7 @@ module.exports = {
         },
         mjs: {
           presets: [["@babel/preset-env", { modules: false }]],
-          plugins: [["./build/imports-extension", { extension: "mjs" }]],
+          plugins: [["./build/imports-suffix", { suffix: "-mjs" }]],
         },
       },
     },
