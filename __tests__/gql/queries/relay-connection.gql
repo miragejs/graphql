@@ -18,6 +18,7 @@ query TestRelayConnection(
         id
       }
     }
+    totalCount
     pageInfo {
       hasPreviousPage
       hasNextPage

@@ -18,6 +18,7 @@ query TestNonNullEdgesRelayConnection(
         id
       }
     }
+    totalCount
     pageInfo {
       hasPreviousPage
       hasNextPage
