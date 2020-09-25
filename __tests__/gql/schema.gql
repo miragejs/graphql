@@ -111,16 +111,19 @@ type TestOption {
 
 type TestRelayConnection {
   edges: [TestRelayEdge]
+  totalCount: Int!
   pageInfo: PageInfo!
 }
 
 type TestNonNullEdgesRelayConnection {
   edges: [TestRelayEdge!]!
+  totalCount: Int!
   pageInfo: PageInfo!
 }
 
 type TestNonNullNodesRelayConnection {
   edges: [TestNonNullNodesRelayEdge]
+  totalCount: Int!
   pageInfo: PageInfo!
 }
 

@@ -33,6 +33,7 @@ describe("Integration | queries | Relay connection", function () {
           node: { id: "3" },
         },
       ],
+      totalCount: 3,
       pageInfo: {
         hasPreviousPage: false,
         hasNextPage: false,
@@ -55,6 +56,7 @@ describe("Integration | queries | Relay connection", function () {
             node: { id: "1" },
           },
         ],
+        totalCount: 1,
         pageInfo: {
           hasPreviousPage: false,
           hasNextPage: false,
@@ -76,6 +78,7 @@ describe("Integration | queries | Relay connection", function () {
             node: { id: "2" },
           },
         ],
+        totalCount: 3,
         pageInfo: {
           hasPreviousPage: true,
           hasNextPage: true,
@@ -97,6 +100,7 @@ describe("Integration | queries | Relay connection", function () {
             node: { id: "2" },
           },
         ],
+        totalCount: 3,
         pageInfo: {
           hasPreviousPage: true,
           hasNextPage: true,
