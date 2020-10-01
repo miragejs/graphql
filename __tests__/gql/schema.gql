@@ -84,6 +84,7 @@ type TestObject {
   belongsToField: TestCategory
   belongsToNonNullField: TestCategory!
   hasManyField: [TestOption]
+  hasManyFilteredField(name: String): [TestOption]
   hasManyNonNullField: [TestOption]!
   hasManyNestedNonNullField: [TestOption!]!
   interfaceField: TestInterface
