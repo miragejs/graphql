@@ -7,7 +7,7 @@ describe("Unit | ORM | records", function () {
         associations: { bars: "HasMany" },
         attrs: { name: "foo" },
         bars: [{ name: "bar" }],
-        modelName: "foo"
+        modelName: "foo",
       };
 
       expect(adaptRecord(record, "Foo")).toEqual({
@@ -23,13 +23,13 @@ describe("Unit | ORM | records", function () {
           associations: { bars: "HasMany" },
           attrs: { name: "foo" },
           bars: [{ name: "bar" }],
-          modelName: "foo"
+          modelName: "foo",
         },
         {
           associations: { baz: "belongsTo" },
           attrs: { name: "bar" },
           baz: { name: "baz" },
-          modelName: "foo"
+          modelName: "foo",
         },
       ];
 

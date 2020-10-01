@@ -15,7 +15,7 @@ describe("Integration | queries | object", function () {
     const testOptions = server.createList("test-option", 1, { name: "opt" });
     const filterableTestOptions = [
       ...testOptions,
-      server.create("test-option", { name: "Foo" })
+      server.create("test-option", { name: "Foo" }),
     ];
     const testRelayNodes = server.createList("test-relay-node", 3);
     const testUnions = [
@@ -41,7 +41,7 @@ describe("Integration | queries | object", function () {
       unionField: testUnions,
       unionNonNullField: testUnions,
       unionNestedNonNullField: testUnions,
-      unionSingularField: testUnions[0]
+      unionSingularField: testUnions[0],
     });
 
     const { testObject } = await query(objectKitchenSinkQuery, {
