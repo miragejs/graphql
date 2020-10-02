@@ -7,6 +7,7 @@ describe("Unit | ORM | records", function () {
         associations: { bars: "HasMany" },
         attrs: { name: "foo" },
         bars: [{ name: "bar" }],
+        modelName: "foo",
       };
 
       expect(adaptRecord(record, "Foo")).toEqual({
@@ -22,11 +23,13 @@ describe("Unit | ORM | records", function () {
           associations: { bars: "HasMany" },
           attrs: { name: "foo" },
           bars: [{ name: "bar" }],
+          modelName: "foo",
         },
         {
           associations: { baz: "belongsTo" },
           attrs: { name: "bar" },
           baz: { name: "baz" },
+          modelName: "foo",
         },
       ];
 
@@ -46,7 +49,10 @@ describe("Unit | ORM | records", function () {
   });
 
   describe("get records", function () {
-    const models = [{ attrs: { name: "Foo1" } }, { attrs: { name: "Foo2" } }];
+    const models = [
+      { attrs: { name: "Foo1" }, modelName: "foo" },
+      { attrs: { name: "Foo2" }, modelName: "foo" },
+    ];
     const mirageSchema = {
       foos: {
         where: jest.fn(({ name }) => ({

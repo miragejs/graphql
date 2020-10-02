@@ -45,6 +45,9 @@ query TestObject($id: ID!) {
     hasManyField {
       ...testOption
     }
+    hasManyFilteredField(name: "Foo") {
+      ...testOption
+    }
     hasManyNonNullField {
       ...testOption
     }
@@ -65,6 +68,21 @@ query TestObject($id: ID!) {
     }
     relayConnectionField(first: 1, after: "VGVzdFJlbGF5Tm9kZTox") {
       ...testRelayConnection
+    }
+    relayConnectionFilteredField(first: 1, color: "blue") {
+      edges {
+        cursor
+        node {
+          id
+          color
+        }
+      }
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
     }
     relayConnectionNonNullField(last: 1, before: "VGVzdFJlbGF5Tm9kZToz") {
       ...testRelayConnection

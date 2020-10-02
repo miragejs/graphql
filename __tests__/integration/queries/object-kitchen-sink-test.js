@@ -1,17 +1,35 @@
 import objectKitchenSinkQuery from "@tests/gql/queries/object-kitchen-sink.gql";
 import { query, startServer } from "@tests/integration/setup";
 
+function seedUnassociatedRecords(server) {
+  server.createList("test-option", 2);
+  server.create("test-union-one");
+  server.create("test-union-two");
+}
+
 describe("Integration | queries | object", function () {
   test("query for test object", async function () {
     const server = startServer();
     const testCategory = server.create("test-category", { name: "cat" });
     const testImpl = server.create("test-impl-one", { label: "impl" });
     const testOptions = server.createList("test-option", 1, { name: "opt" });
-    const testRelayNodes = server.createList("test-relay-node", 3);
+    const filterableTestOptions = [
+      ...testOptions,
+      server.create("test-option", { name: "Foo" }),
+    ];
+    const blueTestRelayNode = server.create("test-relay-node", {
+      color: "blue",
+    });
+    const testRelayNodes = [
+      blueTestRelayNode,
+      ...server.createList("test-relay-node", 2),
+    ];
     const testUnions = [
       server.create("test-union-one", { oneName: "foo" }),
       server.create("test-union-two", { twoName: "bar" }),
     ];
+
+    seedUnassociatedRecords(server);
 
     server.create("test-object", {
       size: "XL",
@@ -19,15 +37,18 @@ describe("Integration | queries | object", function () {
       belongsToField: testCategory,
       belongsToNonNullField: testCategory,
       hasManyField: testOptions,
+      hasManyFilteredField: filterableTestOptions,
       hasManyNonNullField: testOptions,
       hasManyNestedNonNullField: testOptions,
       interfaceField: testImpl,
       interfaceNonNullField: testImpl,
       relayConnectionField: testRelayNodes,
+      relayConnectionFilteredField: testRelayNodes,
       relayConnectionNonNullField: testRelayNodes,
       unionField: testUnions,
       unionNonNullField: testUnions,
       unionNestedNonNullField: testUnions,
+      unionSingularField: testUnions[0],
     });
 
     const { testObject } = await query(objectKitchenSinkQuery, {
@@ -41,6 +62,7 @@ describe("Integration | queries | object", function () {
       belongsToField: { id: "1", name: "cat" },
       belongsToNonNullField: { id: "1", name: "cat" },
       hasManyField: [{ id: "1", name: "opt" }],
+      hasManyFilteredField: [{ id: "2", name: "Foo" }],
       hasManyNonNullField: [{ id: "1", name: "opt" }],
       hasManyNestedNonNullField: [{ id: "1", name: "opt" }],
       interfaceField: { id: "1", label: "impl" },
@@ -52,6 +74,20 @@ describe("Integration | queries | object", function () {
           hasNextPage: true,
           startCursor: "VGVzdFJlbGF5Tm9kZToy",
           endCursor: "VGVzdFJlbGF5Tm9kZToy",
+        },
+      },
+      relayConnectionFilteredField: {
+        edges: [
+          {
+            cursor: "VGVzdFJlbGF5Tm9kZTox",
+            node: { id: "1", color: "blue" },
+          },
+        ],
+        pageInfo: {
+          hasPreviousPage: false,
+          hasNextPage: false,
+          startCursor: "VGVzdFJlbGF5Tm9kZTox",
+          endCursor: "VGVzdFJlbGF5Tm9kZTox",
         },
       },
       relayConnectionNonNullField: {
