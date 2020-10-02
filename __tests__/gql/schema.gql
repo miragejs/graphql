@@ -93,6 +93,11 @@ type TestObject {
     first: Int
     after: String
   ): TestRelayConnection
+  relayConnectionFilteredField(
+    first: Int,
+    after: String,
+    color: String
+  ): TestRelayConnection
   relayConnectionNonNullField(
     last: Int
     before: String

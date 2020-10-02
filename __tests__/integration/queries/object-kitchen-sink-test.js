@@ -17,7 +17,14 @@ describe("Integration | queries | object", function () {
       ...testOptions,
       server.create("test-option", { name: "Foo" }),
     ];
-    const testRelayNodes = server.createList("test-relay-node", 3);
+    const blueTestRelayNode = server.create(
+      "test-relay-node",
+      { color: "blue" },
+    );
+    const testRelayNodes = [
+      blueTestRelayNode,
+      ...server.createList("test-relay-node", 2),
+    ];
     const testUnions = [
       server.create("test-union-one", { oneName: "foo" }),
       server.create("test-union-two", { twoName: "bar" }),
@@ -37,6 +44,7 @@ describe("Integration | queries | object", function () {
       interfaceField: testImpl,
       interfaceNonNullField: testImpl,
       relayConnectionField: testRelayNodes,
+      relayConnectionFilteredField: testRelayNodes,
       relayConnectionNonNullField: testRelayNodes,
       unionField: testUnions,
       unionNonNullField: testUnions,
@@ -67,6 +75,18 @@ describe("Integration | queries | object", function () {
           hasNextPage: true,
           startCursor: "VGVzdFJlbGF5Tm9kZToy",
           endCursor: "VGVzdFJlbGF5Tm9kZToy",
+        },
+      },
+      relayConnectionFilteredField: {
+        edges: [{
+          cursor: "VGVzdFJlbGF5Tm9kZTox",
+          node: { id: "1", color: "blue" },
+        }],
+        pageInfo: {
+          hasPreviousPage: false,
+          hasNextPage: false,
+          startCursor: "VGVzdFJlbGF5Tm9kZTox",
+          endCursor: "VGVzdFJlbGF5Tm9kZTox",
         },
       },
       relayConnectionNonNullField: {
