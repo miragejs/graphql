@@ -1,9 +1,13 @@
 import { GraphQLObjectType, GraphQLScalarType } from "graphql";
 import { graphQLSchemaAST, graphQLSchema } from "@tests/gql/schema";
-import { ensureExecutableGraphQLSchema, unwrapType } from "@lib/utils";
+import {
+  capitalize,
+  ensureExecutableGraphQLSchema,
+  unwrapType
+} from "@lib/utils";
 
 describe("Unit | utils", function () {
-  describe("ensure exectuable GraphQL schema", function () {
+  describe("ensure executable GraphQL schema", function () {
     function testSchema(schemaToTest) {
       const schema = ensureExecutableGraphQLSchema(schemaToTest);
       const typeMap = schema.getTypeMap();
@@ -109,6 +113,12 @@ describe("Unit | utils", function () {
         isList: true,
         type: nonNullNodeType,
       });
+    });
+  });
+
+  describe("capitalize string", function () {
+    it("capitalizes the first letter of a string", function () {
+      expect(capitalize("foo bar")).toBe("Foo bar");
     });
   });
 });
