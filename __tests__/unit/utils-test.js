@@ -3,7 +3,7 @@ import { graphQLSchemaAST, graphQLSchema } from "@tests/gql/schema";
 import {
   capitalize,
   ensureExecutableGraphQLSchema,
-  unwrapType
+  unwrapType,
 } from "@lib/utils";
 
 describe("Unit | utils", function () {

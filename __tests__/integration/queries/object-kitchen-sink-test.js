@@ -17,10 +17,9 @@ describe("Integration | queries | object", function () {
       ...testOptions,
       server.create("test-option", { name: "Foo" }),
     ];
-    const blueTestRelayNode = server.create(
-      "test-relay-node",
-      { color: "blue" },
-    );
+    const blueTestRelayNode = server.create("test-relay-node", {
+      color: "blue",
+    });
     const testRelayNodes = [
       blueTestRelayNode,
       ...server.createList("test-relay-node", 2),
@@ -78,10 +77,12 @@ describe("Integration | queries | object", function () {
         },
       },
       relayConnectionFilteredField: {
-        edges: [{
-          cursor: "VGVzdFJlbGF5Tm9kZTox",
-          node: { id: "1", color: "blue" },
-        }],
+        edges: [
+          {
+            cursor: "VGVzdFJlbGF5Tm9kZTox",
+            node: { id: "1", color: "blue" },
+          },
+        ],
         pageInfo: {
           hasPreviousPage: false,
           hasNextPage: false,
