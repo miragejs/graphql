@@ -1,4 +1,4 @@
-mutation UpdateTestObject($id: ID!, $input: TestObjectInput!) {
+mutation UpdateTestObject($id: ID!, $input: TestObjectInput) {
   updateTestObject(id: $id, input: $input) {
     id
     size

@@ -1,0 +1,6 @@
+mutation CreateTestObjectNonNull($input: TestObjectInput!) {
+  createTestObjectNonNull(input: $input) {
+    id
+    size
+  }
+}
