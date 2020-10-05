@@ -8,11 +8,13 @@ interface TestInterface {
 }
 
 type Mutation {
-  createTestObject(input: TestObjectInput!): TestObject
+  createTestObject(input: TestObjectInput): TestObject
+  createTestObjectNonNull(input: TestObjectInput!): TestObject
   deleteTestObject(id: ID!): TestObject
   optionallyMutateTestObject(id: ID!, input: TestObjectInput!): TestObject
   unimplemented: TestObject
-  updateTestObject(id: ID!, input: TestObjectInput!): TestObject
+  updateTestObject(id: ID!, input: TestObjectInput): TestObject
+  updateTestObjectNonNull(id: ID!, input: TestObjectInput!): TestObject
 }
 
 type PageInfo {
@@ -89,19 +91,13 @@ type TestObject {
   hasManyNestedNonNullField: [TestOption!]!
   interfaceField: TestInterface
   interfaceNonNullField: TestInterface!
-  relayConnectionField(
+  relayConnectionField(first: Int, after: String): TestRelayConnection
+  relayConnectionFilteredField(
     first: Int
     after: String
-  ): TestRelayConnection
-  relayConnectionFilteredField(
-    first: Int,
-    after: String,
     color: String
   ): TestRelayConnection
-  relayConnectionNonNullField(
-    last: Int
-    before: String
-  ): TestRelayConnection!
+  relayConnectionNonNullField(last: Int, before: String): TestRelayConnection!
   size: String
   sizeNonNull: String!
   unionField: [TestUnion]

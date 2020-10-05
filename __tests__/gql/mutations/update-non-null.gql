@@ -1,0 +1,6 @@
+mutation UpdateTestObjectNonNull($id: ID!, $input: TestObjectInput!) {
+  updateTestObjectNonNull(id: $id, input: $input) {
+    id
+    size
+  }
+}
