@@ -29,7 +29,7 @@ function startServer({ resolvers }) {
 }
 
 describe("Integration | handler", function () {
-  it("resolver context gets the Mirage schema and request", async function () {
+  test("resolver context gets Mirage schema and request", async function () {
     expect.assertions(2);
 
     const server = startServer({
