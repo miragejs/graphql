@@ -1,0 +1,11 @@
+{
+  "include": ["lib/**/*"],
+  "exclude": ["**/__mocks__/**/*"],
+
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
+  }
+}
