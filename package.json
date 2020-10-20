@@ -25,7 +25,7 @@
   "scripts": {
     "build": "node build && tsc",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "node build && tsc",
     "prettier:check": "prettier --list-different '**/*.js'",
     "prettier:update": "prettier --write .",
     "test": "jest"
