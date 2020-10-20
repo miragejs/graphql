@@ -10,17 +10,20 @@ Use [Mirage JS](https://miragejs.com) with [GraphQL](https://graphql.org).
 Mirage lets you simulate API responses by writing **route handlers**. A route handler is a function that returns data to fulfill a request. Mirage GraphQL provides the ability to create a GraphQL route handler based on your GraphQL and Mirage schemas.
 
 ```javascript
-import { Server } from "miragejs"
+import { createServer } from "miragejs"
 import { createGraphQLHandler } from "@miragejs/graphql"
 import graphQLSchema from "app/gql/schema.gql"
 
-new Server({
-  routes() {
-    const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema)
+export function makeServer() {
+  return createServer({
+    routes() {
+      const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema)
 
-    this.post("/graphql", graphQLHandler)
-  }
-})
+      this.post("/graphql", graphQLHandler)
+    }
+  })
+}
+
 ```
 
 ### Highlights
@@ -130,12 +133,12 @@ and we create a Mirage server like this:
 ```javascript
 // app/mirage/server.js
 
-import { Server } from "miragejs"
+import { createServer } from "miragejs"
 import { createGraphQLHandler } from "@miragejs/graphql"
 import graphQLSchema from "app/gql/schema.gql"
 
-export function createServer() {
-  return new Server({
+export function makeServer() {
+  return createServer({
     routes() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema);
 
@@ -394,15 +397,15 @@ In the Mirage server setup:
 ```javascript
 // app/mirage/server.js
 
-import { Server } from "miragejs"
+import { createServer } from "miragejs"
 import graphQLSchema from "app/gql/schema.gql"
 import {
   createGraphQLHandler,
   mirageGraphQLFieldResolver
 } from "@miragejs/graphql"
 
-export function createServer() {
-  return new Server({
+export function makeServer() {
+  return createServer({
     routes() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema, {
         resolvers: {
@@ -498,15 +501,15 @@ In the Mirage server setup:
 ```javascript
 // app/mirage/server.js
 
-import { Server } from "miragejs"
+import { createServer } from "miragejs"
 import graphQLSchema from "app/gql/schema.gql"
 import {
   createGraphQLHandler,
   mirageGraphQLFieldResolver
 } from "@miragejs/graphql"
 
-export function createServer() {
-  return new Server({
+export function makeServer() {
+  return createServer({
     routes() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema, {
         resolvers: {
