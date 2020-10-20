@@ -508,7 +508,7 @@ import {
   mirageGraphQLFieldResolver
 } from "@miragejs/graphql"
 
-export function makerServer() {
+export function makeServer() {
   return createServer({
     routes() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema, {
