@@ -1,13 +1,16 @@
-import contextQuery from "@tests/gql/queries/context.gql";
 import { createGraphQLHandler } from "../../lib/handler";
 import { createServer } from "miragejs";
-import { graphQLSchema } from "@tests/gql/schema";
+import gql from "graphql-tag";
 import { query } from "@tests/integration/setup";
 
 let mirageSchema;
 let request;
 
 function startServer({ resolvers }) {
+  const graphQLSchema = `
+    type Foo { bar: String }
+    type Query { foo: Foo }
+  `;
   const server = createServer({
     routes() {
       this.post("/graphql", (_schema, _request) => {
@@ -35,11 +38,11 @@ describe("Integration | handler", function () {
     const server = startServer({
       resolvers: {
         Query: {
-          testContext(_obj, _args, context) {
+          foo(_obj, _args, context) {
             expect(context.mirageSchema).toBe(mirageSchema);
             expect(context.request).toBe(request);
 
-            return "foo";
+            return { bar: "foo" };
           },
         },
       },
@@ -47,7 +50,15 @@ describe("Integration | handler", function () {
 
     server.logging = false;
 
-    await query(contextQuery);
+    await query(
+      gql`
+        query {
+          foo {
+            bar
+          }
+        }
+      `
+    );
 
     server.shutdown();
   });
