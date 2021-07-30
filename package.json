@@ -1,6 +1,6 @@
 {
   "name": "@miragejs/graphql",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "A library for handling GraphQL requests with Mirage JS",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
