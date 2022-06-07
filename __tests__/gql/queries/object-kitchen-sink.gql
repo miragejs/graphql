@@ -66,6 +66,15 @@ query TestObject($id: ID!) {
         label
       }
     }
+    interfaceNestedNonNullField {
+      ... on TestInterface {
+        id
+        label
+      }
+      ... on TestImplOne {
+        description
+      }
+    }
     relayConnectionField(first: 1, after: "VGVzdFJlbGF5Tm9kZTox") {
       ...testRelayConnection
     }

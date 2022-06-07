@@ -29,6 +29,7 @@ type Query {
   testInterface(id: ID, label: String): TestInterface
   testInterfaceNonNull(id: ID, label: String): TestInterface!
   testInterfaceOptional(id: ID!): TestInterface
+  testInterfaceMultiple(id: ID, label: String): [TestInterface]
   testObject(id: ID!): TestObject
   testObjectNonNull(id: ID!): TestObject!
   testObjects(size: String): [TestObject]
@@ -91,6 +92,7 @@ type TestObject {
   hasManyNestedNonNullField: [TestOption!]!
   interfaceField: TestInterface
   interfaceNonNullField: TestInterface!
+  interfaceNestedNonNullField: [TestInterface!]!
   relayConnectionField(first: Int, after: String): TestRelayConnection
   relayConnectionFilteredField(
     first: Int
