@@ -1,0 +1,3 @@
+mutation DeleteTestObjectAlt($id: ID!) {
+  deleteTestObjectAlt(id: $id)
+}
