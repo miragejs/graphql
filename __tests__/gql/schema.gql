@@ -10,6 +10,7 @@ interface TestInterface {
 type Mutation {
   createTestObject(input: TestObjectInput): TestObject
   createTestObjectNonNull(input: TestObjectInput!): TestObject
+  deleteTestObjectAlt(id: ID!): Boolean
   deleteTestObject(id: ID!): TestObject
   optionallyMutateTestObject(id: ID!, input: TestObjectInput!): TestObject
   unimplemented: TestObject

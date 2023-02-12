@@ -4,7 +4,7 @@ import { mutate, startServer } from "@tests/integration/setup";
 
 let server;
 
-describe("Integration | mutations | create", function () {
+describe("Integration | mutations | update", function () {
   beforeEach(function () {
     server = startServer();
   });

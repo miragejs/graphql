@@ -140,7 +140,7 @@ import graphQLSchema from "app/gql/schema.gql"
 export function makeServer() {
   return createServer({
     routes() {
-      const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema);
+      const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema)
 
       this.post("/graphql", graphQLHandler)
     }
@@ -155,10 +155,10 @@ In this example, we can get a `Person` record by ID.
 ```javascript
 // app/components/person.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 server.create("person", { firstName: "Mikael", lastName: "Åkerfeldt" })
 
@@ -201,10 +201,10 @@ In this example, we can get all the `Person` records from Mirage's database.
 ```javascript
 // app/components/people.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 server.create("person", { firstName: "Mikael", lastName: "Åkerfeldt" })
 server.create("person", { firstName: "Per", lastName: "Nilsson" })
@@ -261,10 +261,10 @@ In this example, we can create or update a `Person` record in Mirage's database.
 ```javascript
 // app/components/people.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 export default {
   // ...other component stuff
@@ -345,10 +345,10 @@ In the following case, Mirage GraphQL can automatically filter the records from 
 ```javascript
 // app/components/people.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 server.create("person", { firstName: "Mikael", lastName: "Åkerfeldt" })
 server.create("person", { firstName: "Per", lastName: "Nilsson" })
@@ -437,10 +437,10 @@ Having added a resolver to handle the `sortBy` argument, the following component
 ```javascript
 // app/components/people.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 server.create("person", { firstName: "Mikael", lastName: "Åkerfeldt" })
 server.create("person", { firstName: "Per", lastName: "Nilsson" })
@@ -492,9 +492,7 @@ A call to `getSortedPeopleBy("lastName")` will cause Mirage GraphQL to respond w
 
 ### Example: Deleting a Person
 
-If you read the section on automatically resolving mutations, you'll know that Mirage GraphQL can automatically handle conventional mutations that delete records. However, in our example schema, the `deletePerson` mutation is unconventional. It returns `Boolean` instead of a `Person`.
-
-In this case, we need to implement a resolver but just like in the example of sorting people, we can leverage Mirage GraphQL's default behavior.
+If you read the section on automatically resolving mutations, you'll know that Mirage GraphQL can automatically handle conventional mutations that delete records. However, in our example schema, the `deletePerson` mutation is unconventional. It returns `Boolean` instead of a `Person`. In this case, we need to implement a resolver.
 
 In the Mirage server setup:
 
@@ -514,9 +512,17 @@ export function makeServer() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema, {
         resolvers: {
           Mutation: {
-            // Coerce the record returned from the default resolver to a Boolean
-            deletePerson: (obj, args, context, info) =>
-              !!mirageGraphQLFieldResolver(...arguments)
+            deletePerson(obj, args, context, info) {
+              const person = context.mirageSchema.db.people.find(args.id)
+
+              if (person) {
+                context.mirageSchema.db.people.remove(args.id)
+
+                return true
+              }
+
+              return false
+            }
           }
         }
       })
@@ -532,10 +538,10 @@ Having added a resolver to handle the mutation, the following component example 
 ```javascript
 // app/components/people.js
 
-import { createServer } from "app/mirage/server";
+import { createServer } from "app/mirage/server"
 import { request } from "graphql-request"
 
-const server = createServer();
+const server = createServer()
 
 export default {
   // ...other component stuff
