@@ -5,7 +5,7 @@ import { mutate, startServer } from "@tests/integration/setup";
 let server;
 
 describe("Integration | mutations | delete", function () {
-  afterEach(function() {
+  afterEach(function () {
     server.shutdown();
   });
 
@@ -28,12 +28,12 @@ describe("Integration | mutations | delete", function () {
       resolvers: {
         Mutation: {
           deleteTestObjectAlt(_obj, args, context) {
-            context.mirageSchema.db.testObjects.remove(args.id)
+            context.mirageSchema.db.testObjects.remove(args.id);
 
-            return true
-          }
-        }
-      }
+            return true;
+          },
+        },
+      },
     });
 
     server.create("test-object", { size: "M" });
