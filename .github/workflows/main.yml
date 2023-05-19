@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - uses: browser-actions/setup-chrome@v1
 
       - name: Get yarn cache
         id: yarn-cache
@@ -32,6 +33,9 @@ jobs:
         run: |
           yarn prettier:check
           yarn lint
+          yarn ts:check
 
       - name: Test
-        run: yarn test
+        run: |
+          yarn test:unit
+          yarn test:integration

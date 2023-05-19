@@ -1,11 +1,15 @@
 {
-  "include": ["lib/**/*"],
-  "exclude": ["**/__mocks__/**/*"],
-
   "compilerOptions": {
+    "allowArbitraryExtensions": true,
     "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist"
-  }
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "target": "ES2015",
+    "typeRoots": ["node_modules/@types", "lib/@types"],
+  },
+  "files": ["test/@types/gql.d.ts"],
+  "include": ["lib/**/*.ts", "test/**/*.gql", "test/**/*.ts"],
 }

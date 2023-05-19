@@ -1,8 +1,10 @@
-/**/*__mocks__/
-/.github/
-/__tests__/
+/**/*/__mocks__/
+/.*
 /build/
 /coverage/
-/.eslintrc.js
-/babel.config.js
-/jest.config.js
+/test/
+.*
+*.config.js
+*.config.ts
+codegen.ts
+tsconfig.json
