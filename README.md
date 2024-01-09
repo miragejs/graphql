@@ -14,7 +14,7 @@ import { createServer } from "miragejs"
 import { createGraphQLHandler } from "@miragejs/graphql"
 import graphQLSchema from "app/gql/schema.gql"
 
-export function makeServer() {
+export default function makeServer(config) {
   return createServer({
     routes() {
       const graphQLHandler = createGraphQLHandler(graphQLSchema, this.schema)
