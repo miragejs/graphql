@@ -15,6 +15,16 @@ export default defineConfig({
       name: "chrome",
       provider: "webdriverio",
     },
+    coverage: {
+      exclude: [
+        ...configDefaults.coverage.exclude,
+        "**/__mocks__/**",
+        "codegen.ts",
+        "vitest-*.config.ts",
+      ],
+      provider: "istanbul",
+      reporter: ["html"],
+    },
     exclude: [...configDefaults.exclude, "test/unit/**/*.test.ts"],
   },
 });
