@@ -106,6 +106,23 @@ describe("Unit | resolvers | mirage field resolver", function () {
         args,
         context,
         info,
+        false,
+        type
+      );
+    });
+
+    it("can resolve interface list types", function () {
+      const type = typeMap.TestInterface;
+      const info = { returnType: queryFields.testInterfaceMultiple.type };
+
+      mirageGraphQLFieldResolver(obj, args, context, info);
+
+      expect(resolveInterface).toHaveBeenCalledWith(
+        obj,
+        args,
+        context,
+        info,
+        true,
         type
       );
     });

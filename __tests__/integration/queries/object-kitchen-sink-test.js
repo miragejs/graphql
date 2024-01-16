@@ -28,6 +28,13 @@ describe("Integration | queries | object", function () {
       server.create("test-union-one", { oneName: "foo" }),
       server.create("test-union-two", { twoName: "bar" }),
     ];
+    const testInterfaces = [
+      server.create("test-impl-one", {
+        description: "description",
+        label: "impl",
+      }),
+      server.create("test-impl-two", { label: "impl" }),
+    ];
 
     seedUnassociatedRecords(server);
 
@@ -41,6 +48,7 @@ describe("Integration | queries | object", function () {
       hasManyNonNullField: testOptions,
       hasManyNestedNonNullField: testOptions,
       interfaceField: testImpl,
+      interfaceNestedNonNullField: testInterfaces,
       interfaceNonNullField: testImpl,
       relayConnectionField: testRelayNodes,
       relayConnectionFilteredField: testRelayNodes,
@@ -66,6 +74,10 @@ describe("Integration | queries | object", function () {
       hasManyNonNullField: [{ id: "1", name: "opt" }],
       hasManyNestedNonNullField: [{ id: "1", name: "opt" }],
       interfaceField: { id: "1", label: "impl" },
+      interfaceNestedNonNullField: [
+        { id: "2", label: "impl", description: "description" },
+        { id: "1", label: "impl" },
+      ],
       interfaceNonNullField: { id: "1", label: "impl" },
       relayConnectionField: {
         edges: [{ cursor: "VGVzdFJlbGF5Tm9kZToy", node: { id: "2" } }],
