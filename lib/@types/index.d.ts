@@ -1,5 +1,4 @@
 import type { DocumentNode, GraphQLResolveInfo, GraphQLSchema } from "graphql";
-import type MirageSchema from "miragejs/lib/orm/schema.js";
 import type { Request } from "miragejs";
 
 /**
@@ -44,6 +43,11 @@ export type ResolverContext = { [key: string]: any } & {
 export type ResolverMap = {
   [fieldName: string]: Resolver | ResolverMap;
 };
+
+/**
+ * An interface to the Mirage ORM that allows for querying and creating records.
+ */
+type MirageSchema = any;
 
 /**
  * Source of a GraphQL schema. It can be a string, an existing GraphQL schema or

@@ -4,9 +4,8 @@ import createFieldResolver from "./resolvers/field.js";
 import { createModels } from "./orm/models.js";
 import { ensureExecutableGraphQLSchema } from "./utils.js";
 
-import type { AnyRegistry, AnyResponse } from "miragejs/-types";
-import type MirageSchema from "miragejs/lib/orm/schema.js";
-import type { ResolverMap, SourceGraphQLSchema } from "./@types/index.d.ts";
+import type { AnyRegistry } from "miragejs/-types";
+import type { MirageSchema, ResolverMap, SourceGraphQLSchema } from "./@types/index.d.ts";
 import type { RouteHandler } from "miragejs/server";
 
 /**
@@ -50,7 +49,7 @@ export function createGraphQLHandler(
   graphQLSchema: SourceGraphQLSchema,
   mirageSchema: MirageSchema,
   options: CreateHandlerOptions = {}
-): RouteHandler<AnyRegistry, AnyResponse> {
+): RouteHandler<AnyRegistry> {
   const { context = {}, resolvers, root } = options;
   const fieldResolver = createFieldResolver(resolvers);
 
