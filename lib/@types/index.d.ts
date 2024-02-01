@@ -11,6 +11,11 @@ export type GraphQLObjectLike = {
 };
 
 /**
+ * An interface to the Mirage ORM that allows for querying and creating records.
+ */
+export type MirageSchema = any;
+
+/**
  * A map of GraphQL query arguments.
  */
 export type QueryArgs = { [argName: string]: any };
@@ -45,12 +50,7 @@ export type ResolverMap = {
 };
 
 /**
- * An interface to the Mirage ORM that allows for querying and creating records.
- */
-type MirageSchema = any;
-
-/**
  * Source of a GraphQL schema. It can be a string, an existing GraphQL schema or
  * an AST.
  */
-type SourceGraphQLSchema = DocumentNode | GraphQLSchema | string;
+export type SourceGraphQLSchema = DocumentNode | GraphQLSchema | string;
