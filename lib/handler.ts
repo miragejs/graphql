@@ -5,7 +5,11 @@ import { createModels } from "./orm/models.js";
 import { ensureExecutableGraphQLSchema } from "./utils.js";
 
 import type { AnyRegistry } from "miragejs/-types";
-import type { MirageSchema, ResolverMap, SourceGraphQLSchema } from "./@types/index.js";
+import type {
+  MirageSchema,
+  ResolverMap,
+  SourceGraphQLSchema,
+} from "./@types/index.js";
 import type { RouteHandler } from "miragejs/server";
 
 /**

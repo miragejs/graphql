@@ -19,10 +19,7 @@ export default defineConfig({
   },
   plugins: [
     dts({
-      exclude: [
-        "**/*/__mocks__",
-        "test/**/*",
-      ],
+      exclude: ["**/*/__mocks__", "test/**/*"],
       outDir: "dist/types",
     }),
   ],

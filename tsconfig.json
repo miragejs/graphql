@@ -8,8 +8,8 @@
     "moduleResolution": "nodenext",
     "outDir": "dist",
     "target": "ES2015",
-    "typeRoots": ["node_modules/@types", "lib/@types"],
+    "typeRoots": ["node_modules/@types", "lib/@types"]
   },
   "files": ["test/@types/gql.d.ts"],
-  "include": ["lib/**/*.ts", "test/**/*.gql", "test/**/*.ts"],
+  "include": ["lib/**/*.ts", "test/**/*.gql", "test/**/*.ts"]
 }
