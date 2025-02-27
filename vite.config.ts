@@ -21,6 +21,7 @@ export default defineConfig({
     dts({
       exclude: ["**/*/__mocks__", "test/**/*"],
       outDir: "dist/types",
+      copyDtsFiles: true,
     }),
   ],
 });

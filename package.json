@@ -1,6 +1,6 @@
 {
   "name": "@miragejs/graphql",
-  "version": "0.2.0-beta.4",
+  "version": "0.2.0-beta.5",
   "description": "A library for handling GraphQL requests with Mirage JS",
   "main": "./dist/mirage-graphql.cjs",
   "type": "module",
@@ -9,8 +9,10 @@
   "exports": {
     ".": {
       "import": "./dist/mirage-graphql.js",
-      "require": "./dist/mirage-graphql.cjs"
-    }
+      "require": "./dist/mirage-graphql.cjs",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./types/*": "./dist/types/*"
   },
   "keywords": [
     "mirage",
@@ -32,9 +34,9 @@
     "url": "https://github.com/miragejs/graphql/issues"
   },
   "scripts": {
-    "build": "vite build && cp -R lib/@types dist/types",
+    "build": "vite build",
     "lint": "eslint .",
-    "prepublishOnly": "vite build && cp -R lib/@types dist/types",
+    "prepublishOnly": "vite build",
     "prettier:check": "prettier --list-different '**/*.ts'",
     "prettier:update": "prettier --write .",
     "test:generate-gql-types": "graphql-codegen-esm",
