@@ -26,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/miragejs/graphql.git"
+    "url": "git+https://github.com/miragejs/graphql.git"
   },
   "license": "MIT",
   "author": "Rocky Neurock <jneurock+npm@gmail.com>",
