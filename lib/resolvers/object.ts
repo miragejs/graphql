@@ -41,7 +41,7 @@ function isMutation(info: GraphQLResolveInfo) {
  *
  *  @see {@link https://graphql.org/learn/execution/#root-fields-resolvers}
  */
-export default function resolveObject(
+export function resolveObject(
   source: any,
   args: QueryArgs,
   context: ResolverContext,

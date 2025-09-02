@@ -1,8 +1,8 @@
 vi.mock("../../../lib/resolvers/mirage.js");
 
-import createFieldResolver from "../../../lib/resolvers/field.js";
+import { createFieldResolver } from "../../../lib/resolvers/field.js";
 import { describe, expect, test, vi } from "vitest";
-import mirageGraphQLFieldResolver from "../../../lib/resolvers/mirage.js";
+import { mirageGraphQLFieldResolver } from "../../../lib/resolvers/mirage.js";
 import { mockRequest } from "../../mock.js";
 
 import type { GraphQLResolveInfo } from "graphql";

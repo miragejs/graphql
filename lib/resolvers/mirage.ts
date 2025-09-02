@@ -6,11 +6,11 @@ import {
   isUnionType,
 } from "graphql";
 
-import resolveDefault from "./default.js";
-import resolveList from "./list.js";
-import resolveObject from "./object.js";
-import resolveInterface from "./interface.js";
-import resolveUnion from "./union.js";
+import { defaultFieldResolver } from "./default.js";
+import { resolveList } from "./list.js";
+import { resolveObject } from "./object.js";
+import { resolveInterface } from "./interface.js";
+import { resolveUnion } from "./union.js";
 import { unwrapType } from "../utils.js";
 
 import type { QueryArgs, ResolverContext } from "../@types/index.js";
@@ -29,7 +29,7 @@ import type { QueryArgs, ResolverContext } from "../@types/index.js";
  *
  * @see {@link https://graphql.org/learn/execution/#root-fields-resolvers}
  */
-export default function mirageGraphQLFieldResolver(
+export function mirageGraphQLFieldResolver(
   source: any,
   args: QueryArgs,
   context: ResolverContext,
@@ -46,7 +46,7 @@ export default function mirageGraphQLFieldResolver(
   }
 
   if (!isObjectType(type)) {
-    return resolveDefault(source, args, context, info);
+    return defaultFieldResolver(source, args, context, info);
   }
 
   if (isList) {

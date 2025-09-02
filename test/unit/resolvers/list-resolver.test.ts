@@ -3,7 +3,7 @@ vi.mock("../../../lib/orm/records.js");
 import { describe, expect, test, vi } from "vitest";
 import { filterRecords, getRecords } from "../../../lib/orm/records.js";
 import { mockRequest } from "../../mock.js";
-import resolveList from "../../../lib/resolvers/list.js";
+import { resolveList } from "../../../lib/resolvers/list.js";
 
 import type { GraphQLObjectType, GraphQLResolveInfo } from "graphql";
 

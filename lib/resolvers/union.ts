@@ -26,7 +26,7 @@ function getRecordsForTypes(
  *
  * @see {@link https://graphql.org/learn/execution/#root-fields-resolvers}
  */
-export default function resolveUnion(
+export function resolveUnion(
   source: any,
   args: QueryArgs,
   context: ResolverContext,

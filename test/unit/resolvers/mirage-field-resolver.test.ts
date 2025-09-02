@@ -5,15 +5,15 @@ vi.mock("../../../lib/resolvers/interface.js");
 vi.mock("../../../lib/resolvers/union.js");
 
 import { describe, expect, test, vi } from "vitest";
-import defaultFieldResolver from "../../../lib/resolvers/default.js";
+import { defaultFieldResolver } from "../../../lib/resolvers/default.js";
 import { ensureExecutableGraphQLSchema } from "../../../lib/utils.js";
 import graphQLSchema from "../../gql/schema.gql";
-import mirageGraphQLFieldResolver from "../../../lib/resolvers/mirage.js";
+import { mirageGraphQLFieldResolver } from "../../../lib/resolvers/mirage.js";
 import { mockRequest } from "../../mock.js";
-import resolveList from "../../../lib/resolvers/list.js";
-import resolveObject from "../../../lib/resolvers/object.js";
-import resolveInterface from "../../../lib/resolvers/interface.js";
-import resolveUnion from "../../../lib/resolvers/union.js";
+import { resolveList } from "../../../lib/resolvers/list.js";
+import { resolveObject } from "../../../lib/resolvers/object.js";
+import { resolveInterface } from "../../../lib/resolvers/interface.js";
+import { resolveUnion } from "../../../lib/resolvers/union.js";
 
 import type {
   GraphQLList,

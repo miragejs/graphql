@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import mirageGraphQLFieldResolver from "../../../lib/resolvers/mirage.js";
+import { mirageGraphQLFieldResolver } from "../../../lib/resolvers/mirage.js";
 import { query, startServer } from "../setup.js";
 import sortedObjectsQuery from "../../gql/queries/sorted-objects.gql";
 

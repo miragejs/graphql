@@ -1,3 +1,3 @@
 import { vi } from "vitest";
 
-export default vi.fn(() => {});
+export const resolveObject = vi.fn(() => {});

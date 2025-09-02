@@ -1,3 +1,1 @@
-import { defaultFieldResolver } from "graphql";
-
-export default defaultFieldResolver;
+export { defaultFieldResolver } from "graphql";

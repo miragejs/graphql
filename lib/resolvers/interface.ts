@@ -5,7 +5,7 @@ import {
   InlineFragmentNode,
 } from "graphql";
 
-import resolveObject from "./object.js";
+import { resolveObject } from "./object.js";
 
 import type { ResolverContext, QueryArgs } from "../@types/index.js";
 
@@ -51,7 +51,7 @@ function resolveFromImplementations(
  *
  * @see {@link https://graphql.org/learn/execution/#root-fields-resolvers}
  */
-export default function resolveInterface(
+export function resolveInterface(
   source: any,
   args: QueryArgs,
   context: ResolverContext,

@@ -1,6 +1,6 @@
 import { GraphQLFieldResolver, GraphQLSchema, graphql } from "graphql";
 import { Response } from "miragejs";
-import createFieldResolver from "./resolvers/field.js";
+import { createFieldResolver } from "./resolvers/field.js";
 import { createModels } from "./orm/models.js";
 import { ensureExecutableGraphQLSchema } from "./utils.js";
 

@@ -26,7 +26,7 @@ function getRelatedRecords(
  *
  * @see {@link https://graphql.org/learn/execution/#root-fields-resolvers}
  */
-export default function resolveList(
+export function resolveList(
   source: any,
   args: QueryArgs,
   context: ResolverContext,

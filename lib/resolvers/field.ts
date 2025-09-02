@@ -1,4 +1,4 @@
-import mirageGraphQLFieldResolver from "./mirage.js";
+import { mirageGraphQLFieldResolver } from "./mirage.js";
 
 import type { GraphQLResolveInfo } from "graphql";
 
@@ -30,7 +30,7 @@ function getOptionalResolver(
  * The field resolver delegates to an optional resolver passed in when creating
  * the GraphQL request handler or the default Mirage GraphQL resolver.
  */
-export default function createFieldResolver(resolvers?: ResolverMap) {
+export function createFieldResolver(resolvers?: ResolverMap) {
   return function fieldResolver(
     source: any,
     args: QueryArgs,
